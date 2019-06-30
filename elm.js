@@ -7564,7 +7564,7 @@ var author$project$Main$view = function (model) {
 										_List_fromArray(
 											[
 												elm$html$Html$Attributes$class('button level-item'),
-												elm$html$Html$Attributes$href('https://docs.google.com/spreadsheets/d/e/2PACX-1vQZC30ieu6mK5MD7Lne1DQT9TAWdHxhJHJo_6GaGYdKK8r7gPmX1U_DPwdq6A96g5Bk60udub05jYwq/pubhtml'),
+												elm$html$Html$Attributes$href('https://docs.google.com/spreadsheets/d/e/2PACX-1vTHVYIK58sd50oKo_gxKDlV_GllLZSfpAYZ0wl1NDVmG8Awm2aH9Omjj2HZ47iRBQ1PK0PUyADEy6Zu/pubhtml'),
 												elm$html$Html$Attributes$target('_blank')
 											]),
 										_List_fromArray(
@@ -7576,7 +7576,7 @@ var author$project$Main$view = function (model) {
 										_List_fromArray(
 											[
 												elm$html$Html$Attributes$class('button level-item'),
-												elm$html$Html$Attributes$href('https://docs.google.com/spreadsheets/d/1Idl-EoBYmy7eSlYtQ0PNwy9-FZXXbWdYW6JjEdxu9d4/edit?usp=sharing'),
+												elm$html$Html$Attributes$href('https://docs.google.com/spreadsheets/d/1utvyKJkEkHn1AIYIFiObs_sF-SYLrti6yyjY0aB-zm8/edit?usp=sharing'),
 												elm$html$Html$Attributes$target('_blank')
 											]),
 										_List_fromArray(
