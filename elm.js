@@ -5070,15 +5070,15 @@ var author$project$Main$getSelectedNum = F2(
 var author$project$Main$resultToString = function (m) {
 	switch (m) {
 		case 0:
-			return 'Apostles';
+			return 'Words';
 		case 1:
-			return 'Prophets';
+			return 'QT';
 		case 2:
-			return 'Evangelists';
+			return 'Gifts';
 		case 3:
-			return 'Shepherds';
+			return 'Service';
 		case 4:
-			return 'Teachers';
+			return 'Touch';
 		default:
 			return '';
 	}
@@ -6029,15 +6029,15 @@ var author$project$Main$postResult = function (model) {
 };
 var author$project$Main$stringToResult = function (str) {
 	switch (str) {
-		case 'Apostles':
+		case 'Words':
 			return 0;
-		case 'Prophets':
+		case 'QT':
 			return 1;
-		case 'Evangelists':
+		case 'Gifts':
 			return 2;
-		case 'Shepherds':
+		case 'Service':
 			return 3;
-		case 'Teachers':
+		case 'Touch':
 			return 4;
 		default:
 			return 5;
@@ -6738,15 +6738,15 @@ var author$project$Main$resultProperty = function (m) {
 var author$project$Main$resultToText = function (m) {
 	switch (m) {
 		case 0:
-			return '使徒';
+			return '肯定的な言葉';
 		case 1:
-			return '預言者';
+			return '良質な時間';
 		case 2:
-			return '伝道者';
+			return 'プレゼント';
 		case 3:
-			return '牧会';
+			return 'ヘルプ/手助け';
 		case 4:
-			return '教師';
+			return 'スキンシップ(タッチ)';
 		default:
 			return 'エラーが発生しました。';
 	}
@@ -7151,7 +7151,7 @@ var author$project$Main$create2ndResult = function (a) {
 				]),
 			_List_fromArray(
 				[
-					elm$html$Html$text('あなたの二次的な5役者の賜物は・・・')
+					elm$html$Html$text('あなたの愛の第二言語は・・・')
 				])),
 		A2(elm$core$List$map, author$project$Main$makeResultView, lm));
 };
@@ -7303,7 +7303,7 @@ var author$project$Main$viewResult = function (model) {
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('あなたの一次的な5役者の賜物は・・・')
+														elm$html$Html$text('あなたの愛の第一言語はは・・・')
 													])),
 											_Utils_ap(
 												author$project$Main$create1stResult(model.i),
@@ -7378,7 +7378,7 @@ var author$project$Main$viewTendacy = function (model) {
 									]),
 								_List_fromArray(
 									[
-										elm$html$Html$text('性向一覧')
+										elm$html$Html$text('言語一覧')
 									])),
 								A2(
 								elm$html$Html$button,
@@ -7508,7 +7508,18 @@ var author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								elm$html$Html$text('5役者の賜物の査定')
+								elm$html$Html$text('愛を伝える5つの言語')
+							])),
+						A2(
+						elm$html$Html$p,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('content'),
+								A2(elm$html$Html$Attributes$style, 'margin-bottom', '0px')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text('下記1~30には、2つの質問が併記されています。そのうち、あなたの希望・要望をよりよく表現していると思う方の文章を選んでください。')
 							])),
 						A2(
 						elm$html$Html$p,
@@ -7518,7 +7529,7 @@ var author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								elm$html$Html$text('下記1~30には、2つの主張(性向)が併記されています。そのうち、自分のことだと思う方を選んでください。')
+								elm$html$Html$text('少なくとも15分から30分の時間をかけるくらい、なるべくリラックスした環境でテストし、あわてて終わらせることは避けてください。')
 							])),
 						A2(
 						elm$html$Html$div,
@@ -7546,7 +7557,7 @@ var author$project$Main$view = function (model) {
 											]),
 										_List_fromArray(
 											[
-												elm$html$Html$text('性向一覧確認')
+												elm$html$Html$text('言語一覧確認')
 											])),
 										A2(
 										elm$html$Html$a,
@@ -7676,7 +7687,7 @@ var author$project$Main$view = function (model) {
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('主張(性向)')
+														elm$html$Html$text('質問')
 													]))
 											]))
 									])),
@@ -7703,64 +7714,64 @@ var author$project$Main$view = function (model) {
 								elm$html$Html$tbody,
 								_List_Nil,
 								_Utils_ap(
-									A5(author$project$Main$row, 1, '私はリーダーの動きに合わせるようにしています。', '私は人と一緒に問題を克服するのが好きです。', 0, 3),
+									A5(author$project$Main$row, 1, 'ほめ言葉や励ましのメモをもらう事が好きである。', '抱きしめられたい。', 0, 4),
 									_Utils_ap(
-										A5(author$project$Main$row, 2, '私は具体的な答えを得るために、具体的な質問をします。', '私は学んだことを明確に表現し、人々が理解できるように取り組みをするのが好きです。', 1, 4),
+										A5(author$project$Main$row, 2, '大切な人と、二人きりで時を過ごすのが好きである。', '適切な助けをしてくれる人に、愛情を感じる。', 1, 3),
 										_Utils_ap(
-											A5(author$project$Main$row, 3, '私は人が幸せでいるかどうか知りたいです。', '私は人々が成熟し、成長することにワクワクします。', 2, 0),
+											A5(author$project$Main$row, 3, 'プレゼントをもらう事が好きである。', '愛する人や友人と気軽に雑談するのが好きである。', 2, 1),
 											_Utils_ap(
-												A5(author$project$Main$row, 4, 'よく人から相談とサポートを求められます。', '私はできる限り正確に何かをすることが好きです。', 3, 4),
+												A5(author$project$Main$row, 4, '人が私を行動的に助けてくれることに、愛情を感じる。', '人が私に触れるときに、愛情を感じる。', 3, 4),
 												_Utils_ap(
-													A5(author$project$Main$row, 5, '私はビジョンや夢を定期的に書き留めます。', '私は人に良いことを伝える方法を様々に考えます。', 1, 2),
+													A5(author$project$Main$row, 5, '愛する人や尊敬する人に肩を抱かれるとき、愛情を感じる。', '愛する人や尊敬する人からプレゼントをもらうとき、愛情を感じる。', 4, 2),
 													_Utils_ap(
-														A5(author$project$Main$row, 6, '私は人を見る目があると言われています。', '人生の歩みの中で、軸となる価値観は 、私にとって不可欠です。', 1, 4),
+														A5(author$project$Main$row, 6, '友人や愛する人と、出かけるのが好きである。', '特別な人と握手や、手をつなぐ事が好きである。', 1, 4),
 														_Utils_ap(
-															A5(author$project$Main$row, 7, '私は意見の一致が状況を改善する主要な方法だと考えています。', '私は意見を聞いて、 他の意見を知ることが状況を改善する方法だと信じています。', 0, 1),
+															A5(author$project$Main$row, 7, '私にとって、目に見える愛情表現(ギフト)が、とても大切である。', '人が私をほめてくれた時、愛情を感じます。', 2, 0),
 															_Utils_ap(
-																A5(author$project$Main$row, 8, '私は物事を黒か白のどちらかだと見なす傾向があります。', '私は大きな絵(ビジョン)を掲げ続ける能力があります。', 4, 0),
+																A5(author$project$Main$row, 8, '一緒にいたい人と、隣同士で座るのが好きです。', '人から私が魅力的と言われるのが好きである。', 4, 0),
 																_Utils_ap(
-																	A5(author$project$Main$row, 9, '私は正しいことを中心に据える傾向があります。', '私は離れてしまった人たちのことを、頻繁に思い出し考えています。', 4, 2),
+																	A5(author$project$Main$row, 9, '友人や愛する人と、時間を過ごすことが好きである。', '友人や愛する人から、ちょっとしたプレゼントをもらうのが好きである。', 1, 2),
 																	_Utils_ap(
-																		A5(author$project$Main$row, 10, '私は人々が成熟するのを助け、成長することを優先します。', '私は人々の心を癒やし、助けたりするのが大好きです。', 0, 3),
+																		A5(author$project$Main$row, 10, '受け入れを表す言葉は、私に大切である。', '誰かが助けてくれたとき、その人に愛されていると感じる。', 0, 3),
 																		_Utils_ap(
-																			A5(author$project$Main$row, 11, '私は利他の心がない人のために時々泣いています。', '私は他の人たちが成長し、仕事ができるように成長させるのが好きです。', 2, 0),
+																			A5(author$project$Main$row, 11, '友人や愛する人と、一緒に何かをすることが好きである。', '優しい言葉をかけられることが好きである。', 1, 0),
 																			_Utils_ap(
-																				A5(author$project$Main$row, 12, '私は人の話を聞いて質問するのが大好きです。', '私は人々がアドバイスを聞けるように助けるのが好きです。', 3, 1),
+																				A5(author$project$Main$row, 12, '人の言葉よりも、行動に愛情を感じます。', 'ハグは私に親近感と尊重を感じさせます。', 3, 4),
 																				_Utils_ap(
-																					A5(author$project$Main$row, 13, '人々を運命(目的)に導くことは最も重要なことです。', '人を愛することは最も重要なことです。', 0, 3),
+																					A5(author$project$Main$row, 13, '否定的な言葉は極力避け、ほめ言葉を大切にしている。', '一つの大きなプレゼントより、複数の小さなプレゼントが好き。', 0, 2),
 																					_Utils_ap(
-																						A5(author$project$Main$row, 14, '私は他の人のためにアドバイスを聞き求めます。', '私は批判的にはなりたくないですが、人々は自分自身に正直でなければならないと思います。', 1, 4),
+																						A5(author$project$Main$row, 14, '人と雑談し行動を共にするとき、親近感をもちます。', '友人や愛する人から触れられた時に、親近感を感じる。', 1, 4),
 																						_Utils_ap(
-																							A5(author$project$Main$row, 15, '私はしばしば奇跡が起こるように願い、人々が癒やされるのを見ます。', '私は人々が責任を持ち、正しい情報の中に留まることに情熱を持っています。', 0, 4),
+																							A5(author$project$Main$row, 15, '達成したことを人に褒められるのが好きである。', '好きでない事でも、私のためにしてくれる人に愛情を感じる。', 0, 3),
 																							_Utils_ap(
-																								A5(author$project$Main$row, 16, '勉強するとき、私は知るということに飢え乾いています。', '私は考えるとき、よく他の人のことについて、思いつきます。', 4, 1),
+																								A5(author$project$Main$row, 16, '通りがかりに、友人や愛する人に触れられるのが好きである。', '人が私の話しに耳を傾け、興味を示してくれることを好む。', 4, 1),
 																								_Utils_ap(
-																									A5(author$project$Main$row, 17, '人は私について、たいへん辛抱強く、人の世話をしていると言います。', '私は好きなことを遠くへ伝えに行くことが大好きです。', 3, 2),
+																									A5(author$project$Main$row, 17, '友人や愛する人が、仕事や企画を手伝ってくれる時、愛情を感じる。', '友人を愛する人から、プレゼントを受けることがとても好きである。', 3, 2),
 																									_Utils_ap(
-																										A5(author$project$Main$row, 18, '私はネットワーク化と人をつなぐのが好きです。', '私は人々が夢とビジョンを具体的になるよう助けます。', 0, 1),
+																										A5(author$project$Main$row, 18, '人から容姿をほめられることが好きである。', '人が私の気持ちを、時間をかけて理解してくれる時、愛情を感じる。', 0, 1),
 																										_Utils_ap(
-																											A5(author$project$Main$row, 19, '私はテーマについてすべてを学ぶのが好きです。', '私は平和が好きで、人々が愛し合える方法を見せます。', 4, 3),
+																											A5(author$project$Main$row, 19, '特別な人から触れられるとき、安心感を得ることができます。', '助けられるとき愛情を感じます。', 4, 3),
 																											_Utils_ap(
-																												A5(author$project$Main$row, 20, '私は人々を慰めて励ますのが大好きです。', '私は一貫して利他の心がない人を考えています。', 3, 2),
+																												A5(author$project$Main$row, 20, '特別な人がしてくれた多くのことに感謝します。', '特別な人が作ってくれたプレゼントを受けることが好きである。', 3, 2),
 																												_Utils_ap(
-																													A5(author$project$Main$row, 21, '私はよく他人を励ますために個人的な言葉を語ります。', '私は一度だけ会った人でも、その人のことを心の中で思っています。', 1, 3),
+																													A5(author$project$Main$row, 21, '人が私に全身全霊で接してくれるとき、とても好きである。', '人が私を助けてくれる時の感覚がとても好きである。', 1, 3),
 																													_Utils_ap(
-																														A5(author$project$Main$row, 22, '私は好きなことを、できる限りシェアします。', '私は人々が集まるグループに焦点を当て、そのグループに近づく戦略を立てます。', 2, 0),
+																														A5(author$project$Main$row, 22, '人が私の誕生日にプレゼントで祝ってくれるとき、愛情を感じる。', '心のこもった言葉で誕生日を祝ってくれるとき、愛情を感じる。', 2, 0),
 																														_Utils_ap(
-																															A5(author$project$Main$row, 23, '私は罪ある人達を見ると、すぐに「救いが必要だ」と考えます。', '映画のキャラクターであっても、すぐに感情移入します。', 2, 3),
+																															A5(author$project$Main$row, 23, 'プレゼントをもらうとき、人が私のことを考えていてくれると知ります。', '人が私の雑用を手伝ってくれるとき、愛情を感じる。', 2, 3),
 																															_Utils_ap(
-																																A5(author$project$Main$row, 24, '私は思い付きを言葉にし、人々やグループに宣言します。', '私は私にとって重要なことは、誰にでもシェアするのが大好きです。', 1, 2),
+																																A5(author$project$Main$row, 24, '人が私の話を妨げず、我慢強く聞いてくれることに感謝します。', '私の特別な日を、ギフトをもって覚え、祝ってくれること感謝します。', 1, 2),
 																																_Utils_ap(
-																																	A5(author$project$Main$row, 25, '会議やイベントに出席していない人のことを気にかけている自分によく気がつきます。', '私は地上と天国のつながりが非常によくわかります。', 3, 1),
+																																	A5(author$project$Main$row, 25, '愛する人が、日々の責任を心配して手伝ってくれることが嬉しい。', '特別な人と遠出をするのが楽しい。', 3, 1),
 																																	_Utils_ap(
-																																		A5(author$project$Main$row, 26, '私は基盤となる考え方と原則に焦点を当てます。', '私は新しい人に会い、新しい状況が好きです。', 4, 2),
+																																		A5(author$project$Main$row, 26, '身近な人とキスしたり、されることに喜びを感じる。', '理由もなくプレゼントを受けるとき、喜びを感じる。', 4, 2),
 																																		_Utils_ap(
-																																			A5(author$project$Main$row, 27, '私は新しいことを始めて、仲間を募集するのが好きです。', '私には、日々、新鮮な情報を受けることが重要です。', 0, 1),
+																																			A5(author$project$Main$row, 27, '感謝しているといわれることが好きである。', '話をしているときに、私を見てくれる人が好きである。', 0, 1),
 																																			_Utils_ap(
-																																				A5(author$project$Main$row, 28, '私はタイミングがあれば、熱心に私の好きなことを分かち合います。', '私は物事を秩序に従って整理して、明確にするのが好きです。', 2, 4),
+																																				A5(author$project$Main$row, 28, '友人または、愛する人からのプレゼントは私にとって常に特別である。', '友人または、愛する人に触れられるとき、気持ちがよい。', 2, 4),
 																																				_Utils_ap(
-																																					A5(author$project$Main$row, 29, '人々は私のところに来て、サポートと助けを求めます。', '私は他の人を訓練して、働きに解き放つのが好きです。', 3, 0),
-																																					A5(author$project$Main$row, 30, '私は人々が正しい情報を保つのを助けます。', '私はイベントで一緒に集うために、人々を招くのが得意です。', 4, 2)))))))))))))))))))))))))))))))
+																																					A5(author$project$Main$row, 29, '人が要望した責務に情熱を持ってくれるとき、愛情を感じる。', 'どれだけ感謝しているかを告げられるとき、愛情を感じる。', 3, 0),
+																																					A5(author$project$Main$row, 30, '私は毎日触れられていたい。', '私は誉め言葉や励ましが日常必要である。', 4, 0)))))))))))))))))))))))))))))))
 							])),
 						A2(
 						elm$html$Html$button,
