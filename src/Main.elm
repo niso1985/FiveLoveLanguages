@@ -42,7 +42,7 @@ type alias Model =
 
 init : () -> ( Model, Cmd Msg )
 init _ =
-    ( { answers = Array.repeat 30 None
+    ( { answers = Array.repeat 3 None
       , viewing = Question
       , name = ""
       }

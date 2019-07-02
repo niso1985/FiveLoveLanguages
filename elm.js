@@ -5013,7 +5013,7 @@ var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
 		{
-			i: A2(elm$core$Array$repeat, 30, 5),
+			i: A2(elm$core$Array$repeat, 3, 5),
 			w: '',
 			g: 0
 		},
