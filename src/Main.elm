@@ -266,7 +266,7 @@ view : Model -> Html Msg
 view model =
     section [ class "section" ]
         [ div [ class "container" ]
-            [ h1 [ class "title" ] [ text "愛を伝える5つの言語" ]
+            [ h1 [ class "title" ] [ text "愛を伝える5つの言語(独身者向け)" ]
             , p [ class "content", style "margin-bottom" "0px" ] [ text "下記1~30には、2つの質問が併記されています。そのうち、あなたの希望・要望をよりよく表現していると思う方の文章を選んでください。" ]
             , p [ class "content" ] [ text "少なくとも15分から30分の時間をかけるくらい、なるべくリラックスした環境でテストし、あわてて終わらせることは避けてください。" ]
             , div [ class "level" ]
