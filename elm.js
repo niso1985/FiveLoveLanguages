@@ -5013,7 +5013,7 @@ var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
 		{
-			i: A2(elm$core$Array$repeat, 3, 5),
+			i: A2(elm$core$Array$repeat, 30, 5),
 			w: '',
 			g: 0
 		},
@@ -6547,191 +6547,55 @@ var author$project$Main$findNo1SelectedResultType = function (a) {
 			[5]);
 	}
 };
-var elm$html$Html$li = _VirtualDom_node('li');
-var elm$html$Html$ul = _VirtualDom_node('ul');
 var author$project$Main$resultProperty = function (m) {
 	switch (m) {
 		case 0:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人々が協力して効果的に動くことを期待する')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('組織の一致を願っている')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('イベントなど誰でも参加できるように配慮する')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('リーダー的素質で人々が自発的に付いてくる')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('異なるグループの人に共通の目的を与える')
-							]))
+						elm$html$Html$text('行動は必ずしも言葉よりも雄弁ではありません。これがあなたの愛の言語であるならば、想定外の褒め言葉はあなたにとって最高なものでしょう。「あなたを愛しています」という言葉を聞くことはとても重要です。その言葉の背後にある理由を聞くことは、さらにあなたの精神を上向きにします。侮辱はあなたを粉々にし、脳裏から離れないでしょう。あなたは励ましや親切にされる言葉を栄養に活動できます。')
 					]));
 		case 1:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('天の思いを識別する')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人を励ますのにベストな言葉をかけられる')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人の人生の出来事を直感的に感じる')
-							]))
+						elm$html$Html$text('クオリティタイムでは、「愛している」と常に言い続ける必要はありません。このタイプの人は一緒にいることは大事ですが、テレビの電源を切って、食事の手を止めて、すべての雑用と仕事を一旦止める必要があります。そうやって自分だけに注目されているときに、本当に特別で愛されているように感じます。注目されない、予定の延期、傾聴されないことは特に心を痛めます。邪魔されず誰かと話すことや一緒に活動することに時間を費やすように、あなたは時間を共有することによって他人との関係を深めます。')
 					]));
 		case 2:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('自分が知っていて確信を持っていることを伝えるという責任を感じる')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('自分が重要だと思うことを熱心に伝える')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('新しい出会いや環境を好む')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('重要だと思っていることを伝える機会を求める')
-							]))
+						elm$html$Html$text('この愛の言語を物質主義と間違えないでください。贈り物の受け手は、その贈り物の背後にある愛、思慮深さ、努力を大切にします。あなたがこの言語を話すならば、どんな犠牲を払ってでも贈られた完璧な贈り物や行為は、あなたを知り、あなたを気にかけ、あなたを尊んでいるというしるしになります。誕生日を逃したり、気の利かない思いやりのない贈り物は悲惨なことになるでしょう。毎日の行為がないのもそうでしょう。贈り物は、あなたにとって愛の象徴です。')
 					]));
 		case 3:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人を本気で思い遣る')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('グループに溶け込めていない人を気遣いコンタクトする')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('困っている人から頼りにされる')
-							]))
+						elm$html$Html$text('宿題を手伝うことは本当に愛の表現なのでしょうか？なんと、「サービス行為」の言語を持つ人の負担を軽くすることは大いに意味のあることなのです！この言語を持つ人が最も喜ぶ言葉は、「あなたのために私がやります」です。誰かが義務ではなく愛を持ってあなたに仕えるとき、あなたは本当に大切にされ愛されていると感じます。')
 					]));
 		case 4:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('原則をわかりやすく伝えられる')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人が人生の目的に忠実であるようにサポートする')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('強固な土台を構築することに熱中する')
-							])),
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('真理を愛する')
-							]))
+						elm$html$Html$text('第一言語がボディタッチである人は、驚くことではないが、とても気難しいです。ハグ、背中をたたく、腕への思いやりのあるタッチは、興奮・関心・心配・愛の全てを示す方法でありえます。物理的な存在感や接しやすさは大事なことですが、同時に無視や虐待は許されず破壊的です。適切でタイムリーなタッチは、あなたに暖かさ、安心感、そして愛を伝えます。')
 					]));
 		default:
 			return A2(
-				elm$html$Html$ul,
+				elm$html$Html$p,
 				_List_Nil,
 				_List_fromArray(
 					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('エラー')
-							]))
+						elm$html$Html$text('エラー')
 					]));
 	}
 };
@@ -6749,94 +6613,6 @@ var author$project$Main$resultToText = function (m) {
 			return 'スキンシップ(タッチ)';
 		default:
 			return 'エラーが発生しました。';
-	}
-};
-var author$project$Main$resultWeekPoint = function (m) {
-	switch (m) {
-		case 0:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('支配的で威圧的になりやすい')
-							]))
-					]));
-		case 1:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('変な人だと思われやすい')
-							]))
-					]));
-		case 2:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('人から拒絶されているとか誤解されていると感じる')
-							]))
-					]));
-		case 3:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('物事を頼まれると「境界線」を引くことが困難であるため疲れてしまう')
-							]))
-					]));
-		case 4:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('不正や不実に直面した時に相手を裁いてしまいやすい')
-							]))
-					]));
-		default:
-			return A2(
-				elm$html$Html$ul,
-				_List_Nil,
-				_List_fromArray(
-					[
-						A2(
-						elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								elm$html$Html$text('エラー')
-							]))
-					]));
 	}
 };
 var elm$html$Html$figure = _VirtualDom_node('figure');
@@ -6914,20 +6690,9 @@ var author$project$Main$makeResultView = function (result) {
 							]),
 						_List_fromArray(
 							[
-								elm$html$Html$text('特徴')
+								elm$html$Html$text('解説')
 							])),
-						author$project$Main$resultProperty(result),
-						A2(
-						elm$html$Html$span,
-						_List_fromArray(
-							[
-								elm$html$Html$Attributes$class('tag')
-							]),
-						_List_fromArray(
-							[
-								elm$html$Html$text('弱点')
-							])),
-						author$project$Main$resultWeekPoint(result)
+						author$project$Main$resultProperty(result)
 					]))
 			]));
 };
@@ -7299,20 +7064,32 @@ var author$project$Main$viewResult = function (model) {
 												elm$html$Html$p,
 												_List_fromArray(
 													[
-														elm$html$Html$Attributes$class('content is-size-5')
+														elm$html$Html$Attributes$class('subtitle')
 													]),
 												_List_fromArray(
 													[
-														elm$html$Html$text('あなたの愛の第一言語はは・・・')
+														elm$html$Html$text('この結果をパートナーに教えてあげてください。')
 													])),
-											_Utils_ap(
-												author$project$Main$create1stResult(model.i),
-												_Utils_ap(
-													author$project$Main$create2ndResult(model.i),
+											A2(
+												elm$core$List$cons,
+												A2(
+													elm$html$Html$p,
 													_List_fromArray(
 														[
-															author$project$Main$createResultGraph(model.i)
-														])))))
+															elm$html$Html$Attributes$class('content is-size-5')
+														]),
+													_List_fromArray(
+														[
+															elm$html$Html$text('あなたの愛の第一言語は・・・')
+														])),
+												_Utils_ap(
+													author$project$Main$create1stResult(model.i),
+													_Utils_ap(
+														author$project$Main$create2ndResult(model.i),
+														_List_fromArray(
+															[
+																author$project$Main$createResultGraph(model.i)
+															]))))))
 									]))
 							])),
 						A2(
