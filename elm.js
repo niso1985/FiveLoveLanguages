@@ -7285,7 +7285,7 @@ var author$project$Main$view = function (model) {
 							]),
 						_List_fromArray(
 							[
-								elm$html$Html$text('愛を伝える5つの言語')
+								elm$html$Html$text('愛を伝える5つの言語(独身者向け)')
 							])),
 						A2(
 						elm$html$Html$p,
