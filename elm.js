@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.P.D === region.U.D)
+	if (region.Q.D === region.V.D)
 	{
-		return 'on line ' + region.P.D;
+		return 'on line ' + region.Q.D;
 	}
-	return 'on lines ' + region.P.D + ' through ' + region.U.D;
+	return 'on lines ' + region.Q.D + ' through ' + region.V.D;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aB,
-		impl.aO,
-		impl.aK,
+		impl.aC,
+		impl.aP,
+		impl.aL,
 		function() { return function() {} }
 	);
 });
@@ -2321,25 +2321,25 @@ var _Http_toTask = F3(function(router, toTask, request)
 	return _Scheduler_binding(function(callback)
 	{
 		function done(response) {
-			callback(toTask(request.av.a(response)));
+			callback(toTask(request.aw.a(response)));
 		}
 
 		var xhr = new XMLHttpRequest();
 		xhr.addEventListener('error', function() { done(elm$http$Http$NetworkError_); });
 		xhr.addEventListener('timeout', function() { done(elm$http$Http$Timeout_); });
-		xhr.addEventListener('load', function() { done(_Http_toResponse(request.av.b, xhr)); });
-		elm$core$Maybe$isJust(request.aN) && _Http_track(router, xhr, request.aN.a);
+		xhr.addEventListener('load', function() { done(_Http_toResponse(request.aw.b, xhr)); });
+		elm$core$Maybe$isJust(request.aO) && _Http_track(router, xhr, request.aO.a);
 
 		try {
-			xhr.open(request.aC, request.aP, true);
+			xhr.open(request.aD, request.aQ, true);
 		} catch (e) {
-			return done(elm$http$Http$BadUrl_(request.aP));
+			return done(elm$http$Http$BadUrl_(request.aQ));
 		}
 
 		_Http_configureRequest(xhr, request);
 
-		request.as.a && xhr.setRequestHeader('Content-Type', request.as.a);
-		xhr.send(request.as.b);
+		request.at.a && xhr.setRequestHeader('Content-Type', request.at.a);
+		xhr.send(request.at.b);
 
 		return function() { xhr.c = true; xhr.abort(); };
 	});
@@ -2350,12 +2350,12 @@ var _Http_toTask = F3(function(router, toTask, request)
 
 function _Http_configureRequest(xhr, request)
 {
-	for (var headers = request.ay; headers.b; headers = headers.b) // WHILE_CONS
+	for (var headers = request.az; headers.b; headers = headers.b) // WHILE_CONS
 	{
 		xhr.setRequestHeader(headers.a.a, headers.a.b);
 	}
-	xhr.timeout = request.aL.a || 0;
-	xhr.responseType = request.av.d;
+	xhr.timeout = request.aM.a || 0;
+	xhr.responseType = request.aw.d;
 	xhr.withCredentials = request.t;
 }
 
@@ -2377,10 +2377,10 @@ function _Http_toResponse(toBody, xhr)
 function _Http_toMetadata(xhr)
 {
 	return {
-		aP: xhr.responseURL,
-		am: xhr.status,
-		aJ: xhr.statusText,
-		ay: _Http_parseHeaders(xhr.getAllResponseHeaders())
+		aQ: xhr.responseURL,
+		an: xhr.status,
+		aK: xhr.statusText,
+		az: _Http_parseHeaders(xhr.getAllResponseHeaders())
 	};
 }
 
@@ -2475,15 +2475,15 @@ function _Http_track(router, xhr, tracker)
 	xhr.upload.addEventListener('progress', function(event) {
 		if (xhr.c) { return; }
 		_Scheduler_rawSpawn(A2(elm$core$Platform$sendToSelf, router, _Utils_Tuple2(tracker, elm$http$Http$Sending({
-			aI: event.loaded,
-			O: event.total
+			aJ: event.loaded,
+			P: event.total
 		}))));
 	});
 	xhr.addEventListener('progress', function(event) {
 		if (xhr.c) { return; }
 		_Scheduler_rawSpawn(A2(elm$core$Platform$sendToSelf, router, _Utils_Tuple2(tracker, elm$http$Http$Receiving({
-			aG: event.loaded,
-			O: event.lengthComputable ? elm$core$Maybe$Just(event.total) : elm$core$Maybe$Nothing
+			aH: event.loaded,
+			P: event.lengthComputable ? elm$core$Maybe$Just(event.total) : elm$core$Maybe$Nothing
 		}))));
 	});
 }
@@ -2872,8 +2872,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		m: func(record.m),
-		Q: record.Q,
-		N: record.N
+		R: record.R,
+		O: record.O
 	}
 });
 
@@ -3142,10 +3142,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.m;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.Q;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.R;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.N) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.O) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -4095,11 +4095,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aB,
-		impl.aO,
-		impl.aK,
+		impl.aC,
+		impl.aP,
+		impl.aL,
 		function(sendToApp, initialModel) {
-			var view = impl.aQ;
+			var view = impl.aR;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -4131,12 +4131,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.aB,
-		impl.aO,
-		impl.aK,
+		impl.aC,
+		impl.aP,
+		impl.aL,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.E && impl.E(sendToApp)
-			var view = impl.aQ;
+			var view = impl.aR;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -4144,12 +4144,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.as);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.at);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aM) && (_VirtualDom_doc.title = title = doc.aM);
+				(title !== doc.aN) && (_VirtualDom_doc.title = title = doc.aN);
 			});
 		}
 	);
@@ -4205,8 +4205,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aD;
-	var onUrlRequest = impl.aE;
+	var onUrlChange = impl.aE;
+	var onUrlRequest = impl.aF;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4226,9 +4226,9 @@ function _Browser_application(impl)
 					var next = elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.af === next.af
-							&& curr.X === next.X
-							&& curr.ac.a === next.ac.a
+							&& curr.ag === next.ag
+							&& curr.Y === next.Y
+							&& curr.ad.a === next.ad.a
 						)
 							? elm$browser$Browser$Internal(next)
 							: elm$browser$Browser$External(href)
@@ -4236,13 +4236,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		aB: function(flags)
+		aC: function(flags)
 		{
-			return A3(impl.aB, flags, _Browser_getUrl(), key);
+			return A3(impl.aC, flags, _Browser_getUrl(), key);
 		},
-		aQ: impl.aQ,
-		aO: impl.aO,
-		aK: impl.aK
+		aR: impl.aR,
+		aP: impl.aP,
+		aL: impl.aL
 	});
 }
 
@@ -4308,17 +4308,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { az: 'hidden', at: 'visibilitychange' }
+		? { aA: 'hidden', au: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { az: 'mozHidden', at: 'mozvisibilitychange' }
+		? { aA: 'mozHidden', au: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { az: 'msHidden', at: 'msvisibilitychange' }
+		? { aA: 'msHidden', au: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { az: 'webkitHidden', at: 'webkitvisibilitychange' }
-		: { az: 'hidden', at: 'visibilitychange' };
+		? { aA: 'webkitHidden', au: 'webkitvisibilitychange' }
+		: { aA: 'hidden', au: 'visibilitychange' };
 }
 
 
@@ -4399,10 +4399,10 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		al: _Browser_getScene(),
-		ap: {
-			J: _Browser_window.pageXOffset,
-			K: _Browser_window.pageYOffset,
+		am: _Browser_getScene(),
+		aq: {
+			K: _Browser_window.pageXOffset,
+			L: _Browser_window.pageYOffset,
 			B: _Browser_doc.documentElement.clientWidth,
 			v: _Browser_doc.documentElement.clientHeight
 		}
@@ -4438,13 +4438,13 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			al: {
+			am: {
 				B: node.scrollWidth,
 				v: node.scrollHeight
 			},
-			ap: {
-				J: node.scrollLeft,
-				K: node.scrollTop,
+			aq: {
+				K: node.scrollLeft,
+				L: node.scrollTop,
 				B: node.clientWidth,
 				v: node.clientHeight
 			}
@@ -4476,16 +4476,16 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			al: _Browser_getScene(),
-			ap: {
-				J: x,
-				K: y,
+			am: _Browser_getScene(),
+			aq: {
+				K: x,
+				L: y,
 				B: _Browser_doc.documentElement.clientWidth,
 				v: _Browser_doc.documentElement.clientHeight
 			},
-			au: {
-				J: x + rect.left,
-				K: y + rect.top,
+			av: {
+				K: x + rect.left,
+				L: y + rect.top,
 				B: rect.width,
 				v: rect.height
 			}
@@ -4523,7 +4523,7 @@ function _Browser_load(url)
 	}));
 }
 var author$project$Main$None = 5;
-var author$project$Main$Question = 0;
+var author$project$Main$Question = {$: 0};
 var elm$core$Array$branchFactor = 32;
 var elm$core$Array$Array_elm_builtin = F4(
 	function (a, b, c, d) {
@@ -5013,9 +5013,10 @@ var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
 		{
-			i: A2(elm$core$Array$repeat, 30, 5),
+			h: A2(elm$core$Array$repeat, 30, 5),
+			J: false,
 			w: '',
-			g: 0
+			f: author$project$Main$Question
 		},
 		elm$core$Platform$Cmd$none);
 };
@@ -5024,9 +5025,13 @@ var elm$core$Platform$Sub$none = elm$core$Platform$Sub$batch(_List_Nil);
 var author$project$Main$subscriptions = function (_n0) {
 	return elm$core$Platform$Sub$none;
 };
-var author$project$Main$Failure = 2;
-var author$project$Main$Loading = 3;
-var author$project$Main$Result = 4;
+var author$project$Main$Failure = function (a) {
+	return {$: 2, a: a};
+};
+var author$project$Main$Loading = {$: 3};
+var author$project$Main$Network = 0;
+var author$project$Main$NotSelected = 1;
+var author$project$Main$Result = {$: 4};
 var author$project$Main$Response = function (a) {
 	return {$: 4, a: a};
 };
@@ -5174,7 +5179,7 @@ var author$project$Main$makeJsonBody = function (model) {
 			return _Utils_Tuple2(
 				author$project$Main$resultToString(m),
 				elm$json$Json$Encode$int(
-					A2(author$project$Main$getSelectedNum, m, model.i)));
+					A2(author$project$Main$getSelectedNum, m, model.h)));
 		},
 		_List_fromArray(
 			[0, 1, 2, 3, 4]));
@@ -5792,7 +5797,7 @@ var elm$http$Http$resolve = F2(
 			case 3:
 				var metadata = response.a;
 				return elm$core$Result$Err(
-					elm$http$Http$BadStatus(metadata.am));
+					elm$http$Http$BadStatus(metadata.an));
 			default:
 				var body = response.b;
 				return A2(
@@ -5824,7 +5829,7 @@ var elm$http$Http$Request = function (a) {
 var elm$core$Task$succeed = _Scheduler_succeed;
 var elm$http$Http$State = F2(
 	function (reqs, subs) {
-		return {ai: reqs, an: subs};
+		return {aj: reqs, ao: subs};
 	});
 var elm$http$Http$init = elm$core$Task$succeed(
 	A2(elm$http$Http$State, elm$core$Dict$empty, _List_Nil));
@@ -5869,7 +5874,7 @@ var elm$http$Http$updateReqs = F3(
 					return A2(
 						elm$core$Task$andThen,
 						function (pid) {
-							var _n4 = req.aN;
+							var _n4 = req.aO;
 							if (_n4.$ === 1) {
 								return A3(elm$http$Http$updateReqs, router, otherCmds, reqs);
 							} else {
@@ -5899,7 +5904,7 @@ var elm$http$Http$onEffects = F4(
 				return elm$core$Task$succeed(
 					A2(elm$http$Http$State, reqs, subs));
 			},
-			A3(elm$http$Http$updateReqs, router, cmds, state.ai));
+			A3(elm$http$Http$updateReqs, router, cmds, state.aj));
 	});
 var elm$core$List$maybeCons = F3(
 	function (f, mx, xs) {
@@ -5964,7 +5969,7 @@ var elm$http$Http$onSelfMsg = F3(
 				A2(
 					elm$core$List$filterMap,
 					A3(elm$http$Http$maybeSend, router, tracker, progress),
-					state.an)));
+					state.ao)));
 	});
 var elm$http$Http$Cancel = function (a) {
 	return {$: 0, a: a};
@@ -5979,13 +5984,13 @@ var elm$http$Http$cmdMap = F2(
 			return elm$http$Http$Request(
 				{
 					t: r.t,
-					as: r.as,
-					av: A2(_Http_mapExpect, func, r.av),
-					ay: r.ay,
-					aC: r.aC,
-					aL: r.aL,
-					aN: r.aN,
-					aP: r.aP
+					at: r.at,
+					aw: A2(_Http_mapExpect, func, r.aw),
+					az: r.az,
+					aD: r.aD,
+					aM: r.aM,
+					aO: r.aO,
+					aQ: r.aQ
 				});
 		}
 	});
@@ -6008,23 +6013,23 @@ var elm$http$Http$subscription = _Platform_leaf('Http');
 var elm$http$Http$request = function (r) {
 	return elm$http$Http$command(
 		elm$http$Http$Request(
-			{t: false, as: r.as, av: r.av, ay: r.ay, aC: r.aC, aL: r.aL, aN: r.aN, aP: r.aP}));
+			{t: false, at: r.at, aw: r.aw, az: r.az, aD: r.aD, aM: r.aM, aO: r.aO, aQ: r.aQ}));
 };
 var author$project$Main$postResult = function (model) {
 	return elm$http$Http$request(
 		{
-			as: elm$http$Http$jsonBody(
+			at: elm$http$Http$jsonBody(
 				author$project$Main$makeJsonBody(model)),
-			av: elm$http$Http$expectString(author$project$Main$Response),
-			ay: _List_fromArray(
+			aw: elm$http$Http$expectString(author$project$Main$Response),
+			az: _List_fromArray(
 				[
 					A2(elm$http$Http$header, 'Accept', 'application/json'),
 					A2(elm$http$Http$header, 'Content-Type', 'application/json')
 				]),
-			aC: 'POST',
-			aL: elm$core$Maybe$Nothing,
-			aN: elm$core$Maybe$Nothing,
-			aP: '/api/'
+			aD: 'POST',
+			aM: elm$core$Maybe$Nothing,
+			aO: elm$core$Maybe$Nothing,
+			aQ: '/api/'
 		});
 };
 var author$project$Main$stringToResult = function (str) {
@@ -6095,6 +6100,27 @@ var elm$core$Array$set = F3(
 			A4(elm$core$Array$setHelp, startShift, index, value, tree),
 			tail));
 	});
+var elm$core$List$any = F2(
+	function (isOkay, list) {
+		any:
+		while (true) {
+			if (!list.b) {
+				return false;
+			} else {
+				var x = list.a;
+				var xs = list.b;
+				if (isOkay(x)) {
+					return true;
+				} else {
+					var $temp$isOkay = isOkay,
+						$temp$list = xs;
+					isOkay = $temp$isOkay;
+					list = $temp$list;
+					continue any;
+				}
+			}
+		}
+	});
 var author$project$Main$update = F2(
 	function (msg, model) {
 		switch (msg.$) {
@@ -6105,11 +6131,11 @@ var author$project$Main$update = F2(
 					_Utils_update(
 						model,
 						{
-							i: A3(
+							h: A3(
 								elm$core$Array$set,
 								index,
 								author$project$Main$stringToResult(str),
-								model.i)
+								model.h)
 						}),
 					elm$core$Platform$Cmd$none);
 			case 1:
@@ -6120,21 +6146,37 @@ var author$project$Main$update = F2(
 						{w: str}),
 					elm$core$Platform$Cmd$none);
 			case 2:
-				return (model.w === '') ? _Utils_Tuple2(
+				return function () {
+					var cantSubmit = A2(
+						elm$core$Basics$composeR,
+						elm$core$Array$toList,
+						elm$core$List$any(
+							function (m) {
+								return m === 5;
+							}));
+					return cantSubmit(model.h);
+				}() ? _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{g: 4}),
+						{
+							J: true,
+							f: author$project$Main$Failure(1)
+						}),
+					elm$core$Platform$Cmd$none) : ((model.w === '') ? _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{f: author$project$Main$Result}),
 					elm$core$Platform$Cmd$none) : _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{g: 3}),
-					author$project$Main$postResult(model));
+						{f: author$project$Main$Loading}),
+					author$project$Main$postResult(model)));
 			case 3:
 				var v = msg.a;
 				return _Utils_Tuple2(
 					_Utils_update(
 						model,
-						{g: v}),
+						{f: v}),
 					elm$core$Platform$Cmd$none);
 			default:
 				var r = msg.a;
@@ -6142,13 +6184,15 @@ var author$project$Main$update = F2(
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{g: 4}),
+							{f: author$project$Main$Result}),
 						elm$core$Platform$Cmd$none);
 				} else {
 					return _Utils_Tuple2(
 						_Utils_update(
 							model,
-							{g: 2}),
+							{
+								f: author$project$Main$Failure(0)
+							}),
 						elm$core$Platform$Cmd$none);
 				}
 		}
@@ -6160,10 +6204,52 @@ var author$project$Main$NextView = function (a) {
 	return {$: 3, a: a};
 };
 var author$project$Main$Submit = {$: 2};
-var author$project$Main$Tendacy = 1;
+var author$project$Main$Tendacy = {$: 1};
 var author$project$Main$Select = F2(
 	function (a, b) {
 		return {$: 0, a: a, b: b};
+	});
+var elm$core$Array$getHelp = F3(
+	function (shift, index, tree) {
+		getHelp:
+		while (true) {
+			var pos = elm$core$Array$bitMask & (index >>> shift);
+			var _n0 = A2(elm$core$Elm$JsArray$unsafeGet, pos, tree);
+			if (!_n0.$) {
+				var subTree = _n0.a;
+				var $temp$shift = shift - elm$core$Array$shiftStep,
+					$temp$index = index,
+					$temp$tree = subTree;
+				shift = $temp$shift;
+				index = $temp$index;
+				tree = $temp$tree;
+				continue getHelp;
+			} else {
+				var values = _n0.a;
+				return A2(elm$core$Elm$JsArray$unsafeGet, elm$core$Array$bitMask & index, values);
+			}
+		}
+	});
+var elm$core$Array$get = F2(
+	function (index, _n0) {
+		var len = _n0.a;
+		var startShift = _n0.b;
+		var tree = _n0.c;
+		var tail = _n0.d;
+		return ((index < 0) || (_Utils_cmp(index, len) > -1)) ? elm$core$Maybe$Nothing : ((_Utils_cmp(
+			index,
+			elm$core$Array$tailIndex(len)) > -1) ? elm$core$Maybe$Just(
+			A2(elm$core$Elm$JsArray$unsafeGet, elm$core$Array$bitMask & index, tail)) : elm$core$Maybe$Just(
+			A3(elm$core$Array$getHelp, startShift, index, tree)));
+	});
+var elm$core$Maybe$withDefault = F2(
+	function (_default, maybe) {
+		if (!maybe.$) {
+			var value = maybe.a;
+			return value;
+		} else {
+			return _default;
+		}
 	});
 var elm$json$Json$Decode$map = _Json_map1;
 var elm$json$Json$Decode$map2 = _Json_map2;
@@ -6238,13 +6324,20 @@ var elm$html$Html$Events$onInput = function (tagger) {
 			elm$html$Html$Events$alwaysStop,
 			A2(elm$json$Json$Decode$map, tagger, elm$html$Html$Events$targetValue)));
 };
-var author$project$Main$row = F5(
-	function (index, q1, q2, m1, m2) {
+var author$project$Main$createRow = F6(
+	function (model, index, q1, q2, m1, m2) {
+		var isNotSelected = model.J && (A2(
+			elm$core$Maybe$withDefault,
+			5,
+			A2(elm$core$Array$get, index - 1, model.h)) === 5);
 		return _List_fromArray(
 			[
 				A2(
 				elm$html$Html$tr,
-				_List_Nil,
+				isNotSelected ? _List_fromArray(
+					[
+						A2(elm$html$Html$Attributes$style, 'background-color', 'hsl(0,100%,90%)')
+					]) : _List_Nil,
 				_List_fromArray(
 					[
 						A2(
@@ -6288,7 +6381,10 @@ var author$project$Main$row = F5(
 					])),
 				A2(
 				elm$html$Html$tr,
-				_List_Nil,
+				isNotSelected ? _List_fromArray(
+					[
+						A2(elm$html$Html$Attributes$style, 'background-color', 'hsl(0,100%,90%)')
+					]) : _List_Nil,
 				_List_fromArray(
 					[
 						A2(
@@ -6320,7 +6416,84 @@ var author$project$Main$row = F5(
 					]))
 			]);
 	});
+var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
+var author$project$Main$failureModalContent = function (failure) {
+	if (failure.$ === 2) {
+		if (failure.a === 1) {
+			var _n1 = failure.a;
+			return _List_fromArray(
+				[
+					A2(
+					elm$html$Html$p,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('content')
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('すべての質問に答えてください。')
+						]))
+				]);
+		} else {
+			var _n2 = failure.a;
+			return _List_fromArray(
+				[
+					A2(
+					elm$html$Html$p,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('content')
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('サーバーとの通信エラーが発生しました。')
+						])),
+					A2(
+					elm$html$Html$p,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$class('content')
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('名前を未入力にして試すか、時間を置いてもう一度試してみてください。')
+						]))
+				]);
+		}
+	} else {
+		return _List_fromArray(
+			[
+				A2(
+				elm$html$Html$p,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('content')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('想定外のシステムエラー。')
+					])),
+				A2(
+				elm$html$Html$p,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('content')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('リロードするか、時間を置いてもう一度試してみてください。')
+					]))
+			]);
+	}
+};
+var author$project$Main$isFailureView = function (failure) {
+	if (failure.$ === 2) {
+		return true;
+	} else {
+		return false;
+	}
+};
 var author$project$Main$modal = function (isOpen) {
 	return isOpen ? _List_fromArray(
 		[
@@ -6335,7 +6508,6 @@ var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$footer = _VirtualDom_node('footer');
 var elm$html$Html$header = _VirtualDom_node('header');
-var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$section = _VirtualDom_node('section');
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
@@ -6359,8 +6531,9 @@ var author$project$Main$viewFailure = function (model) {
 		A2(
 			elm$core$List$cons,
 			elm$html$Html$Events$onClick(
-				author$project$Main$NextView(0)),
-			author$project$Main$modal(model.g === 2)),
+				author$project$Main$NextView(author$project$Main$Question)),
+			author$project$Main$modal(
+				author$project$Main$isFailureView(model.f))),
 		_List_fromArray(
 			[
 				A2(
@@ -6411,29 +6584,7 @@ var author$project$Main$viewFailure = function (model) {
 							[
 								elm$html$Html$Attributes$class('modal-card-body')
 							]),
-						_List_fromArray(
-							[
-								A2(
-								elm$html$Html$p,
-								_List_fromArray(
-									[
-										elm$html$Html$Attributes$class('content')
-									]),
-								_List_fromArray(
-									[
-										elm$html$Html$text('サーバーとの通信エラーが発生しました。')
-									])),
-								A2(
-								elm$html$Html$p,
-								_List_fromArray(
-									[
-										elm$html$Html$Attributes$class('content')
-									]),
-								_List_fromArray(
-									[
-										elm$html$Html$text('名前を未入力にして試すか、時間を置いてもう一度試してみてください。')
-									]))
-							])),
+						author$project$Main$failureModalContent(model.f)),
 						A2(
 						elm$html$Html$footer,
 						_List_fromArray(
@@ -6478,15 +6629,6 @@ var elm$core$Maybe$map = F2(
 				f(value));
 		} else {
 			return elm$core$Maybe$Nothing;
-		}
-	});
-var elm$core$Maybe$withDefault = F2(
-	function (_default, maybe) {
-		if (!maybe.$) {
-			var value = maybe.a;
-			return value;
-		} else {
-			return _default;
 		}
 	});
 var elm_community$dict_extra$Dict$Extra$groupBy = F2(
@@ -6865,27 +7007,6 @@ var author$project$Main$findNo2SelectedResultType = function (a) {
 			[5]);
 	}
 };
-var elm$core$List$any = F2(
-	function (isOkay, list) {
-		any:
-		while (true) {
-			if (!list.b) {
-				return false;
-			} else {
-				var x = list.a;
-				var xs = list.b;
-				if (isOkay(x)) {
-					return true;
-				} else {
-					var $temp$isOkay = isOkay,
-						$temp$list = xs;
-					isOkay = $temp$isOkay;
-					list = $temp$list;
-					continue any;
-				}
-			}
-		}
-	});
 var elm$core$List$member = F2(
 	function (x, xs) {
 		return A2(
@@ -6990,8 +7111,9 @@ var author$project$Main$viewResult = function (model) {
 		A2(
 			elm$core$List$cons,
 			elm$html$Html$Events$onClick(
-				author$project$Main$NextView(0)),
-			author$project$Main$modal(model.g === 4)),
+				author$project$Main$NextView(author$project$Main$Question)),
+			author$project$Main$modal(
+				_Utils_eq(model.f, author$project$Main$Result))),
 		_List_fromArray(
 			[
 				A2(
@@ -7083,12 +7205,12 @@ var author$project$Main$viewResult = function (model) {
 															elm$html$Html$text('あなたの愛の第一言語は・・・')
 														])),
 												_Utils_ap(
-													author$project$Main$create1stResult(model.i),
+													author$project$Main$create1stResult(model.h),
 													_Utils_ap(
-														author$project$Main$create2ndResult(model.i),
+														author$project$Main$create2ndResult(model.h),
 														_List_fromArray(
 															[
-																author$project$Main$createResultGraph(model.i)
+																author$project$Main$createResultGraph(model.h)
 															]))))))
 									]))
 							])),
@@ -7120,8 +7242,9 @@ var author$project$Main$viewTendacy = function (model) {
 		A2(
 			elm$core$List$cons,
 			elm$html$Html$Events$onClick(
-				author$project$Main$NextView(0)),
-			author$project$Main$modal(model.g === 1)),
+				author$project$Main$NextView(author$project$Main$Question)),
+			author$project$Main$modal(
+				_Utils_eq(model.f, author$project$Main$Tendacy))),
 		_List_fromArray(
 			[
 				A2(
@@ -7217,20 +7340,6 @@ var author$project$Main$viewTendacy = function (model) {
 					]))
 			]));
 };
-var elm$core$Basics$neq = _Utils_notEqual;
-var elm$core$Basics$not = _Basics_not;
-var elm$core$Basics$composeL = F3(
-	function (g, f, x) {
-		return g(
-			f(x));
-	});
-var elm$core$List$all = F2(
-	function (isOkay, list) {
-		return !A2(
-			elm$core$List$any,
-			A2(elm$core$Basics$composeL, elm$core$Basics$not, isOkay),
-			list);
-	});
 var elm$html$Html$a = _VirtualDom_node('a');
 var elm$html$Html$h1 = _VirtualDom_node('h1');
 var elm$html$Html$table = _VirtualDom_node('table');
@@ -7243,15 +7352,6 @@ var elm$html$Html$Attributes$colspan = function (n) {
 		'colspan',
 		elm$core$String$fromInt(n));
 };
-var elm$json$Json$Encode$bool = _Json_wrap;
-var elm$html$Html$Attributes$boolProperty = F2(
-	function (key, bool) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			elm$json$Json$Encode$bool(bool));
-	});
-var elm$html$Html$Attributes$disabled = elm$html$Html$Attributes$boolProperty('disabled');
 var elm$html$Html$Attributes$href = function (url) {
 	return A2(
 		elm$html$Html$Attributes$stringProperty,
@@ -7329,7 +7429,7 @@ var author$project$Main$view = function (model) {
 										_List_fromArray(
 											[
 												elm$html$Html$Events$onClick(
-												author$project$Main$NextView(1)),
+												author$project$Main$NextView(author$project$Main$Tendacy)),
 												elm$html$Html$Attributes$class('button level-item')
 											]),
 										_List_fromArray(
@@ -7490,83 +7590,75 @@ var author$project$Main$view = function (model) {
 								A2(
 								elm$html$Html$tbody,
 								_List_Nil,
-								_Utils_ap(
-									A5(author$project$Main$row, 1, 'ほめ言葉や励ましのメモをもらう事が好きである。', '抱きしめられたい。', 0, 4),
-									_Utils_ap(
-										A5(author$project$Main$row, 2, '大切な人と、二人きりで時を過ごすのが好きである。', '適切な助けをしてくれる人に、愛情を感じる。', 1, 3),
+								function () {
+									var row = author$project$Main$createRow(model);
+									return _Utils_ap(
+										A5(row, 1, 'ほめ言葉や励ましのメモをもらう事が好きである。', '抱きしめられたい。', 0, 4),
 										_Utils_ap(
-											A5(author$project$Main$row, 3, 'プレゼントをもらう事が好きである。', '愛する人や友人と気軽に雑談するのが好きである。', 2, 1),
+											A5(row, 2, '大切な人と、二人きりで時を過ごすのが好きである。', '適切な助けをしてくれる人に、愛情を感じる。', 1, 3),
 											_Utils_ap(
-												A5(author$project$Main$row, 4, '人が私を行動的に助けてくれることに、愛情を感じる。', '人が私に触れるときに、愛情を感じる。', 3, 4),
+												A5(row, 3, 'プレゼントをもらう事が好きである。', '愛する人や友人と気軽に雑談するのが好きである。', 2, 1),
 												_Utils_ap(
-													A5(author$project$Main$row, 5, '愛する人や尊敬する人に肩を抱かれるとき、愛情を感じる。', '愛する人や尊敬する人からプレゼントをもらうとき、愛情を感じる。', 4, 2),
+													A5(row, 4, '人が私を行動的に助けてくれることに、愛情を感じる。', '人が私に触れるときに、愛情を感じる。', 3, 4),
 													_Utils_ap(
-														A5(author$project$Main$row, 6, '友人や愛する人と、出かけるのが好きである。', '特別な人と握手や、手をつなぐ事が好きである。', 1, 4),
+														A5(row, 5, '愛する人や尊敬する人に肩を抱かれるとき、愛情を感じる。', '愛する人や尊敬する人からプレゼントをもらうとき、愛情を感じる。', 4, 2),
 														_Utils_ap(
-															A5(author$project$Main$row, 7, '私にとって、目に見える愛情表現(ギフト)が、とても大切である。', '人が私をほめてくれた時、愛情を感じます。', 2, 0),
+															A5(row, 6, '友人や愛する人と、出かけるのが好きである。', '特別な人と握手や、手をつなぐ事が好きである。', 1, 4),
 															_Utils_ap(
-																A5(author$project$Main$row, 8, '一緒にいたい人と、隣同士で座るのが好きです。', '人から私が魅力的と言われるのが好きである。', 4, 0),
+																A5(row, 7, '私にとって、目に見える愛情表現(ギフト)が、とても大切である。', '人が私をほめてくれた時、愛情を感じます。', 2, 0),
 																_Utils_ap(
-																	A5(author$project$Main$row, 9, '友人や愛する人と、時間を過ごすことが好きである。', '友人や愛する人から、ちょっとしたプレゼントをもらうのが好きである。', 1, 2),
+																	A5(row, 8, '一緒にいたい人と、隣同士で座るのが好きです。', '人から私が魅力的と言われるのが好きである。', 4, 0),
 																	_Utils_ap(
-																		A5(author$project$Main$row, 10, '受け入れを表す言葉は、私に大切である。', '誰かが助けてくれたとき、その人に愛されていると感じる。', 0, 3),
+																		A5(row, 9, '友人や愛する人と、時間を過ごすことが好きである。', '友人や愛する人から、ちょっとしたプレゼントをもらうのが好きである。', 1, 2),
 																		_Utils_ap(
-																			A5(author$project$Main$row, 11, '友人や愛する人と、一緒に何かをすることが好きである。', '優しい言葉をかけられることが好きである。', 1, 0),
+																			A5(row, 10, '受け入れを表す言葉は、私に大切である。', '誰かが助けてくれたとき、その人に愛されていると感じる。', 0, 3),
 																			_Utils_ap(
-																				A5(author$project$Main$row, 12, '人の言葉よりも、行動に愛情を感じます。', 'ハグは私に親近感と尊重を感じさせます。', 3, 4),
+																				A5(row, 11, '友人や愛する人と、一緒に何かをすることが好きである。', '優しい言葉をかけられることが好きである。', 1, 0),
 																				_Utils_ap(
-																					A5(author$project$Main$row, 13, '否定的な言葉は極力避け、ほめ言葉を大切にしている。', '一つの大きなプレゼントより、複数の小さなプレゼントが好き。', 0, 2),
+																					A5(row, 12, '人の言葉よりも、行動に愛情を感じます。', 'ハグは私に親近感と尊重を感じさせます。', 3, 4),
 																					_Utils_ap(
-																						A5(author$project$Main$row, 14, '人と雑談し行動を共にするとき、親近感をもちます。', '友人や愛する人から触れられた時に、親近感を感じる。', 1, 4),
+																						A5(row, 13, '否定的な言葉は極力避け、ほめ言葉を大切にしている。', '一つの大きなプレゼントより、複数の小さなプレゼントが好き。', 0, 2),
 																						_Utils_ap(
-																							A5(author$project$Main$row, 15, '達成したことを人に褒められるのが好きである。', '好きでない事でも、私のためにしてくれる人に愛情を感じる。', 0, 3),
+																							A5(row, 14, '人と雑談し行動を共にするとき、親近感をもちます。', '友人や愛する人から触れられた時に、親近感を感じる。', 1, 4),
 																							_Utils_ap(
-																								A5(author$project$Main$row, 16, '通りがかりに、友人や愛する人に触れられるのが好きである。', '人が私の話しに耳を傾け、興味を示してくれることを好む。', 4, 1),
+																								A5(row, 15, '達成したことを人に褒められるのが好きである。', '好きでない事でも、私のためにしてくれる人に愛情を感じる。', 0, 3),
 																								_Utils_ap(
-																									A5(author$project$Main$row, 17, '友人や愛する人が、仕事や企画を手伝ってくれる時、愛情を感じる。', '友人を愛する人から、プレゼントを受けることがとても好きである。', 3, 2),
+																									A5(row, 16, '通りがかりに、友人や愛する人に触れられるのが好きである。', '人が私の話しに耳を傾け、興味を示してくれることを好む。', 4, 1),
 																									_Utils_ap(
-																										A5(author$project$Main$row, 18, '人から容姿をほめられることが好きである。', '人が私の気持ちを、時間をかけて理解してくれる時、愛情を感じる。', 0, 1),
+																										A5(row, 17, '友人や愛する人が、仕事や企画を手伝ってくれる時、愛情を感じる。', '友人を愛する人から、プレゼントを受けることがとても好きである。', 3, 2),
 																										_Utils_ap(
-																											A5(author$project$Main$row, 19, '特別な人から触れられるとき、安心感を得ることができます。', '助けられるとき愛情を感じます。', 4, 3),
+																											A5(row, 18, '人から容姿をほめられることが好きである。', '人が私の気持ちを、時間をかけて理解してくれる時、愛情を感じる。', 0, 1),
 																											_Utils_ap(
-																												A5(author$project$Main$row, 20, '特別な人がしてくれた多くのことに感謝します。', '特別な人が作ってくれたプレゼントを受けることが好きである。', 3, 2),
+																												A5(row, 19, '特別な人から触れられるとき、安心感を得ることができます。', '助けられるとき愛情を感じます。', 4, 3),
 																												_Utils_ap(
-																													A5(author$project$Main$row, 21, '人が私に全身全霊で接してくれるとき、とても好きである。', '人が私を助けてくれる時の感覚がとても好きである。', 1, 3),
+																													A5(row, 20, '特別な人がしてくれた多くのことに感謝します。', '特別な人が作ってくれたプレゼントを受けることが好きである。', 3, 2),
 																													_Utils_ap(
-																														A5(author$project$Main$row, 22, '人が私の誕生日にプレゼントで祝ってくれるとき、愛情を感じる。', '心のこもった言葉で誕生日を祝ってくれるとき、愛情を感じる。', 2, 0),
+																														A5(row, 21, '人が私に全身全霊で接してくれるとき、とても好きである。', '人が私を助けてくれる時の感覚がとても好きである。', 1, 3),
 																														_Utils_ap(
-																															A5(author$project$Main$row, 23, 'プレゼントをもらうとき、人が私のことを考えていてくれると知ります。', '人が私の雑用を手伝ってくれるとき、愛情を感じる。', 2, 3),
+																															A5(row, 22, '人が私の誕生日にプレゼントで祝ってくれるとき、愛情を感じる。', '心のこもった言葉で誕生日を祝ってくれるとき、愛情を感じる。', 2, 0),
 																															_Utils_ap(
-																																A5(author$project$Main$row, 24, '人が私の話を妨げず、我慢強く聞いてくれることに感謝します。', '私の特別な日を、ギフトをもって覚え、祝ってくれること感謝します。', 1, 2),
+																																A5(row, 23, 'プレゼントをもらうとき、人が私のことを考えていてくれると知ります。', '人が私の雑用を手伝ってくれるとき、愛情を感じる。', 2, 3),
 																																_Utils_ap(
-																																	A5(author$project$Main$row, 25, '愛する人が、日々の責任を心配して手伝ってくれることが嬉しい。', '特別な人と遠出をするのが楽しい。', 3, 1),
+																																	A5(row, 24, '人が私の話を妨げず、我慢強く聞いてくれることに感謝します。', '私の特別な日を、ギフトをもって覚え、祝ってくれること感謝します。', 1, 2),
 																																	_Utils_ap(
-																																		A5(author$project$Main$row, 26, '身近な人とキスしたり、されることに喜びを感じる。', '理由もなくプレゼントを受けるとき、喜びを感じる。', 4, 2),
+																																		A5(row, 25, '愛する人が、日々の責任を心配して手伝ってくれることが嬉しい。', '特別な人と遠出をするのが楽しい。', 3, 1),
 																																		_Utils_ap(
-																																			A5(author$project$Main$row, 27, '感謝しているといわれることが好きである。', '話をしているときに、私を見てくれる人が好きである。', 0, 1),
+																																			A5(row, 26, '身近な人とキスしたり、されることに喜びを感じる。', '理由もなくプレゼントを受けるとき、喜びを感じる。', 4, 2),
 																																			_Utils_ap(
-																																				A5(author$project$Main$row, 28, '友人または、愛する人からのプレゼントは私にとって常に特別である。', '友人または、愛する人に触れられるとき、気持ちがよい。', 2, 4),
+																																				A5(row, 27, '感謝しているといわれることが好きである。', '話をしているときに、私を見てくれる人が好きである。', 0, 1),
 																																				_Utils_ap(
-																																					A5(author$project$Main$row, 29, '人が要望した責務に情熱を持ってくれるとき、愛情を感じる。', 'どれだけ感謝しているかを告げられるとき、愛情を感じる。', 3, 0),
-																																					A5(author$project$Main$row, 30, '私は毎日触れられていたい。', '私は誉め言葉や励ましが日常必要である。', 4, 0)))))))))))))))))))))))))))))))
+																																					A5(row, 28, '友人または、愛する人からのプレゼントは私にとって常に特別である。', '友人または、愛する人に触れられるとき、気持ちがよい。', 2, 4),
+																																					_Utils_ap(
+																																						A5(row, 29, '人が要望した責務に情熱を持ってくれるとき、愛情を感じる。', 'どれだけ感謝しているかを告げられるとき、愛情を感じる。', 3, 0),
+																																						A5(row, 30, '私は毎日触れられていたい。', '私は誉め言葉や励ましが日常必要である。', 4, 0))))))))))))))))))))))))))))));
+								}())
 							])),
 						A2(
 						elm$html$Html$button,
 						_List_fromArray(
 							[
-								elm$html$Html$Attributes$disabled(
-								function () {
-									var canSubmit = A2(
-										elm$core$Basics$composeR,
-										elm$core$Array$toList,
-										elm$core$List$all(
-											function (m) {
-												return m !== 5;
-											}));
-									return !canSubmit(model.i);
-								}()),
 								elm$html$Html$Events$onClick(author$project$Main$Submit),
-								(model.g === 3) ? elm$html$Html$Attributes$class('button is-loading') : elm$html$Html$Attributes$class('button')
+								_Utils_eq(model.f, author$project$Main$Loading) ? elm$html$Html$Attributes$class('button is-loading') : elm$html$Html$Attributes$class('button')
 							]),
 						_List_fromArray(
 							[
@@ -7669,7 +7761,7 @@ var elm$core$String$contains = _String_contains;
 var elm$core$String$toInt = _String_toInt;
 var elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {W: fragment, X: host, aa: path, ac: port_, af: protocol, ag: query};
+		return {X: fragment, Y: host, ab: path, ad: port_, ag: protocol, ah: query};
 	});
 var elm$url$Url$chompBeforePath = F5(
 	function (protocol, path, params, frag, str) {
@@ -7775,6 +7867,6 @@ var elm$url$Url$fromString = function (str) {
 };
 var elm$browser$Browser$element = _Browser_element;
 var author$project$Main$main = elm$browser$Browser$element(
-	{aB: author$project$Main$init, aK: author$project$Main$subscriptions, aO: author$project$Main$update, aQ: author$project$Main$view});
+	{aC: author$project$Main$init, aL: author$project$Main$subscriptions, aP: author$project$Main$update, aR: author$project$Main$view});
 _Platform_export({'Main':{'init':author$project$Main$main(
 	elm$json$Json$Decode$succeed(0))(0)}});}(this));

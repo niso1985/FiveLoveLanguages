@@ -25,10 +25,15 @@ subscriptions _ =
 -- MODEL
 
 
+type FailureReason
+    = Network
+    | NotSelected
+
+
 type Viewing
     = Question
     | Tendacy
-    | Failure
+    | Failure FailureReason
     | Loading
     | Result
 
@@ -37,6 +42,7 @@ type alias Model =
     { answers : Array ResultType
     , viewing : Viewing
     , name : String
+    , isSubmitted : Bool
     }
 
 
@@ -45,6 +51,7 @@ init _ =
     ( { answers = Array.repeat 30 None
       , viewing = Question
       , name = ""
+      , isSubmitted = False
       }
     , Cmd.none
     )
@@ -214,7 +221,16 @@ update msg model =
             ( { model | name = str }, Cmd.none )
 
         Submit ->
-            if model.name == "" then
+            if
+                let
+                    cantSubmit =
+                        Array.toList >> List.any (\m -> m == None)
+                in
+                cantSubmit model.answers
+            then
+                ( { model | viewing = Failure NotSelected, isSubmitted = True }, Cmd.none )
+
+            else if model.name == "" then
                 ( { model | viewing = Result }, Cmd.none )
 
             else
@@ -229,7 +245,7 @@ update msg model =
                     ( { model | viewing = Result }, Cmd.none )
 
                 Err _ ->
-                    ( { model | viewing = Failure }, Cmd.none )
+                    ( { model | viewing = Failure Network }, Cmd.none )
 
 
 
@@ -295,7 +311,11 @@ view model =
                     ]
                 , tfoot [] [ tr [] [ td [ colspan 3 ] [] ] ]
                 , tbody []
-                    (row 1 "ほめ言葉や励ましのメモをもらう事が好きである。" "抱きしめられたい。" A E
+                    (let
+                        row =
+                            createRow model
+                     in
+                     row 1 "ほめ言葉や励ましのメモをもらう事が好きである。" "抱きしめられたい。" A E
                         ++ row 2 "大切な人と、二人きりで時を過ごすのが好きである。" "適切な助けをしてくれる人に、愛情を感じる。" B D
                         ++ row 3 "プレゼントをもらう事が好きである。" "愛する人や友人と気軽に雑談するのが好きである。" C B
                         ++ row 4 "人が私を行動的に助けてくれることに、愛情を感じる。" "人が私に触れるときに、愛情を感じる。" D E
@@ -328,14 +348,7 @@ view model =
                     )
                 ]
             , button
-                [ disabled
-                    (let
-                        canSubmit =
-                            Array.toList >> List.all (\m -> m /= None)
-                     in
-                     not (canSubmit model.answers)
-                    )
-                , onClick Submit
+                [ onClick Submit
                 , if model.viewing == Loading then
                     class "button is-loading"
 
@@ -410,7 +423,7 @@ viewTendacy model =
 
 viewFailure : Model -> Html Msg
 viewFailure model =
-    div (onClick (NextView Question) :: modal (model.viewing == Failure))
+    div (onClick (NextView Question) :: modal (isFailureView model.viewing))
         [ div [ class "modal-background" ] []
         , div [ class "modal-content modal-card" ]
             [ Html.header [ class "modal-card-head" ]
@@ -419,9 +432,7 @@ viewFailure model =
                 , br [] []
                 ]
             , section [ class "modal-card-body" ]
-                [ p [ class "content" ] [ text "サーバーとの通信エラーが発生しました。" ]
-                , p [ class "content" ] [ text "名前を未入力にして試すか、時間を置いてもう一度試してみてください。" ]
-                ]
+                (failureModalContent model.viewing)
             , footer [ class "modal-card-foot" ]
                 [ button [ class "button modal-card-close" ] [ text "閉じる" ]
                 ]
@@ -429,14 +440,57 @@ viewFailure model =
         ]
 
 
-row : Int -> String -> String -> ResultType -> ResultType -> List (Html Msg)
-row index q1 q2 m1 m2 =
-    [ tr []
+failureModalContent : Viewing -> List (Html Msg)
+failureModalContent failure =
+    case failure of
+        Failure NotSelected ->
+            [ p [ class "content" ] [ text "すべての質問に答えてください。" ] ]
+
+        Failure Network ->
+            [ p [ class "content" ] [ text "サーバーとの通信エラーが発生しました。" ]
+            , p [ class "content" ] [ text "名前を未入力にして試すか、時間を置いてもう一度試してみてください。" ]
+            ]
+
+        _ ->
+            [ p [ class "content" ] [ text "想定外のシステムエラー。" ]
+            , p [ class "content" ] [ text "リロードするか、時間を置いてもう一度試してみてください。" ]
+            ]
+
+
+isFailureView : Viewing -> Bool
+isFailureView failure =
+    case failure of
+        Failure _ ->
+            True
+
+        _ ->
+            False
+
+
+createRow : Model -> Int -> String -> String -> ResultType -> ResultType -> List (Html Msg)
+createRow model index q1 q2 m1 m2 =
+    let
+        isNotSelected =
+            model.isSubmitted && ((model.answers |> Array.get (index - 1) |> Maybe.withDefault None) == None)
+    in
+    [ tr
+        (if isNotSelected then
+            [ style "background-color" "hsl(0,100%,90%)" ]
+
+         else
+            []
+        )
         [ th [ rowspan 2, style "vertical-align" "middle" ] [ text (String.fromInt index) ]
         , td [] [ input [ type_ "radio", name (String.fromInt index), value (resultToString m1), onInput (Select (index - 1)) ] [] ]
         , td [] [ text q1 ]
         ]
-    , tr []
+    , tr
+        (if isNotSelected then
+            [ style "background-color" "hsl(0,100%,90%)" ]
+
+         else
+            []
+        )
         [ td [] [ input [ type_ "radio", name (String.fromInt index), value (resultToString m2), onInput (Select (index - 1)) ] [] ]
         , td [] [ text q2 ]
         ]
